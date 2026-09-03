@@ -1,0 +1,1 @@
+export default function SectionTitle({eyebrow,title,copy,center=false}){return <div className={center?'section-title center':'section-title'}><span>{eyebrow}</span><h2 dangerouslySetInnerHTML={{__html:title}}/>{copy&&<p>{copy}</p>}</div>}

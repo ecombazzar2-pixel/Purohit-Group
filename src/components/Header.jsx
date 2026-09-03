@@ -1,0 +1,5 @@
+import {Link, NavLink} from 'react-router-dom'
+import {Menu, X, ChevronDown} from 'lucide-react'
+import {useState} from 'react'
+import {companies} from '../data/companies'
+export default function Header(){const [open,setOpen]=useState(false),[drop,setDrop]=useState(false);return <header className="site-header"><div className="nav-wrap"><Link className="brand" to="/"><span className="brand-mark">PG</span><span><b>PUROHIT</b><small>GROUP OF COMPANIES</small></span></Link><button className="menu-btn" onClick={()=>setOpen(!open)}>{open?<X/>:<Menu/>}</button><nav className={open?'nav open':'nav'}><NavLink to="/">Home</NavLink><NavLink to="/about">About Us</NavLink><div className="nav-drop"><button onClick={()=>setDrop(!drop)}>Companies <ChevronDown size={15}/></button>{(drop||open)&&<div className="drop-menu">{companies.map(c=><Link key={c.slug} to={`/companies/${c.slug}`} onClick={()=>{setOpen(false);setDrop(false)}}>{c.short}</Link>)}</div>}</div><NavLink to="/contact">Contact</NavLink></nav></div></header>}
